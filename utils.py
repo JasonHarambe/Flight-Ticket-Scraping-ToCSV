@@ -52,7 +52,7 @@ def post_req(df, depDate, depAir, arrAir, retDate = "", numAdult = 1, numChild =
     monitor = {"reqId": reqId,"timestamp":0}
 
     # max number of tries for a certain arrival airport
-    max_try = 5
+    max_try = 2
     num_try = 0
 
     res = requests.post(monitor_url, json=monitor)
@@ -65,7 +65,7 @@ def post_req(df, depDate, depAir, arrAir, retDate = "", numAdult = 1, numChild =
         num_try += 1
         print(f'trying {num_try} {depAir} --> {arrAir}')
 
-        if num_try == max_try:
+        if num_try >= max_try:
             
             s = pd.Series([depAir, arrAir, str(depDate), 0, 'NONE', 'NONE', 'NONE', 'NONE'], 
                 index = ['Departing Airport', 'Arrival Airport', 'Date', 'Price', 'Flight Type', 'Airplane Code', 'Depart Time', 'Arrival Time'])
