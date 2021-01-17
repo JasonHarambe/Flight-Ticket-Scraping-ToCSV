@@ -13,7 +13,7 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-  return {"Home": "True"}
+  return {"Ping": "success"}
 
 @app.post('/flight/')
 def get_flight(flight: Flight):

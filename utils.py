@@ -59,7 +59,7 @@ def post_req(df, depDate, depAir, arrAir, retDate = "", numAdult = 1, numChild =
 
     # if no result is returned, try for max_try number of times
     while not res.json()['result']['data']:
-        time.sleep(2)
+        # time.sleep(2)
         res = requests.post(monitor_url, json=monitor)
 
         num_try += 1
