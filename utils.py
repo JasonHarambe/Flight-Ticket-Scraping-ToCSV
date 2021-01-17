@@ -3,7 +3,6 @@ import time
 from datetime import timedelta, date
 import pandas as pd
 from typing import List
-# import asyncio
 
 def get_lowest(lst):
   arr = []
@@ -52,14 +51,14 @@ def post_req(df, depDate, depAir, arrAir, retDate = "", numAdult = 1, numChild =
     monitor = {"reqId": reqId,"timestamp":0}
 
     # max number of tries for a certain arrival airport
-    max_try = 2
+    max_try = 3
     num_try = 0
 
     res = requests.post(monitor_url, json=monitor)
 
     # if no result is returned, try for max_try number of times
     while not res.json()['result']['data']:
-        # time.sleep(2)
+        time.sleep(2)
         res = requests.post(monitor_url, json=monitor)
 
         num_try += 1
